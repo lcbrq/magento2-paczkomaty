@@ -3,7 +3,7 @@ namespace Flexishore\Paczkomaty\Controller\Index;
 
 use Magento\Framework\View\Result\PageFactory;
 
-class Index extends \Magento\Framework\App\Action\Action
+class Index extends \Magento\Framework\App\Action\ActionTest
 {
     protected $_paczkomatyHelper;
     protected $resultPageFactory;
