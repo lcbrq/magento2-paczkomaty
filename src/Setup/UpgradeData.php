@@ -49,7 +49,7 @@ class UpgradeData implements UpgradeDataInterface
     private function addPaczkomatyTable($setup)
     {
         $query = "
-            CREATE TABLE `flexishore_paczkomaty` (                 
+            CREATE TABLE IF NOT EXISTS `flexishore_paczkomaty` (                 
                       `id` int(10) unsigned NOT NULL AUTO_INCREMENT,    
                       `name` varchar(255) NOT NULL,             
                       `type` varchar(255) DEFAULT NULL,       
