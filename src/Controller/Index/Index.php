@@ -3,7 +3,7 @@ namespace Flexishore\Paczkomaty\Controller\Index;
 
 use Magento\Framework\View\Result\PageFactory;
 
-class Index extends \Magento\Framework\App\Action\ActionTest
+class Index extends \Magento\Framework\App\Action\Action
 {
     protected $_paczkomatyHelper;
     protected $resultPageFactory;
@@ -26,6 +26,7 @@ class Index extends \Magento\Framework\App\Action\ActionTest
     {
         $paczkomaty = $this->_paczkomatyHelper->importPaczkomaty();
 
+        echo 321;
         die;
 
         $this->_view->loadLayout();
