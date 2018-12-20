@@ -2,19 +2,20 @@
 namespace Flexishore\Paczkomaty\Controller\Index;
 
 use Magento\Framework\View\Result\PageFactory;
-
+        
 class Index extends \Magento\Framework\App\Action\Action
 {
     protected $_paczkomatyHelper;
-    protected $resultPageFactory;
+    
+    protected $_resultJsonFactory;
 
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Flexishore\Paczkomaty\Helper\Data $_paczkomatyHelper,
-        PageFactory $resultPageFactory
+        \Magento\Framework\Controller\Result\JsonFactory $resultJsonFactory
     ) {
         $this->_paczkomatyHelper = $_paczkomatyHelper;
-        $this->resultPageFactory = $resultPageFactory;
+        $this->_resultJsonFactory = $resultJsonFactory;
         parent::__construct($context);
     }
     /**
@@ -24,13 +25,14 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $paczkomaty = $this->_paczkomatyHelper->importPaczkomaty();
-
-        echo 321;
-        die;
-
-        $this->_view->loadLayout();
-        $this->_view->getLayout()->initMessages();
-        $this->_view->renderLayout();
+        $paczkomaty = $this->_paczkomatyHelper->getPoints();
+        $city = $this->_request->getParam('city');
+        $paczkomaty->addFieldToFilter('city', $city);
+        $paczkomaty->addFieldToFilter('street', ['neq' => 'NULL']);
+        
+        $result = $this->_resultJsonFactory->create();
+        $result->setData($paczkomaty);
+        return $result;
     }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Flexishore\Paczkomaty\Cron\Import;
+namespace Flexishore\Paczkomaty\Cron;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
@@ -41,20 +41,21 @@ class Import
                 }
 
                 $data = [
-                    'name' => $ps->name,
-                    'type' => $ps->type,
-                    'postcode' => $ps->postcode,
-                    'province' => $ps->province,
-                    'stree' => $ps->stree,
-                    'buildingnumber' => $ps->buildingnumber,
-                    'town' => $ps->town,
-                    'latitude' => $ps->latitude,
-                    'longitude' => $ps->longitude,
-                    'paymentavailable' => $ps->paymentavailable,
-                    'status' => $ps->status,
-                    'partnerid' => $ps->partnerid,
-                    'paymenttype' => $ps->paymenttype
+                    'name' => (string) $ps->name,
+                    'type' => (string) $ps->type,
+                    'postcode' => (string) $ps->postcode,
+                    'province' => (string) $ps->province,
+                    'street' => (string) $ps->street,
+                    'number' => (string) $ps->buildingnumber,
+                    'city' => (string) $ps->town,
+                    'latitude' => (string) $ps->latitude,
+                    'longitude' => (string) $ps->longitude,
+                    'paymentavailable' => (string) $ps->paymentavailable,
+                    'status' => (string) $ps->status,
+                    'partnerid' => (string) $ps->partnerid,
+                    'paymenttype' => (string) $ps->paymenttype
                 ];
+                
                 $model->setData($data);
                 $model->save();
             }

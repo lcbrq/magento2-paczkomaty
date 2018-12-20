@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
-        <job name="murphys_import_catalog" instance="Flexishore\Paczkomaty\Cron\Import" method="execute">
+        <job name="paczkomaty_import" instance="Flexishore\Paczkomaty\Cron\Import" method="execute">
             <schedule>30 1 * * *</schedule>
         </job>
     </group>
